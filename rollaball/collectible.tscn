@@ -12,7 +12,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tia1q"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="Collectible" type="Area3D"]
+[node name="Collectible" type="Area3D" groups=["collectibles"]]
 script = ExtResource("1_vos56")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

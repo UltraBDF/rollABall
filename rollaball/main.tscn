@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b17p4p16711ud"]
+[gd_scene load_steps=11 format=3 uid="uid://b17p4p16711ud"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1ts8y"]
 [ext_resource type="PackedScene" uid="uid://b5f8pj46cngmu" path="res://ground.tscn" id="1_sjufk"]
 [ext_resource type="PackedScene" uid="uid://4h0jnmthkdrt" path="res://player.tscn" id="2_jkxh6"]
-[ext_resource type="Script" path="res://camera_3d.gd" id="3_wyxj2"]
+[ext_resource type="PackedScene" uid="uid://dvruhds0dct6f" path="res://obstacle.tscn" id="2_lubwb"]
 [ext_resource type="PackedScene" uid="uid://c3mwtnp7xalwd" path="res://collectible.tscn" id="5_0vthb"]
+[ext_resource type="Script" path="res://camera_follow.gd" id="6_p0ts8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vqvet"]
 
@@ -15,9 +16,15 @@ sky_material = SubResource("ProceduralSkyMaterial_vqvet")
 background_mode = 2
 sky = SubResource("Sky_k1pfw")
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("score_label")]
+[sub_resource type="LabelSettings" id="LabelSettings_onhsd"]
+font_size = 24
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("score_label", "win_screen_container")]
 script = ExtResource("1_1ts8y")
-score_label = NodePath("CanvasLayer/Label")
+score_label = NodePath("CanvasLayer/ScoreLabel")
+win_screen_container = NodePath("CanvasLayer/CenterContainer")
+obstacle_scene = ExtResource("2_lubwb")
+collectible_scene = ExtResource("5_0vthb")
 
 [node name="Ground" parent="." instance=ExtResource("1_sjufk")]
 
@@ -25,9 +32,9 @@ score_label = NodePath("CanvasLayer/Label")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 10, 14)
-script = ExtResource("3_wyxj2")
-target = NodePath("../Player")
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 12)
+script = ExtResource("6_p0ts8")
+target = NodePath("../Player/CharacterBody3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
@@ -38,28 +45,23 @@ environment = SubResource("Environment_3l8pq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Score: 0"
 
-[node name="Collectible" parent="." instance=ExtResource("5_0vthb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Collectible2" parent="." instance=ExtResource("5_0vthb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 5)
+[node name="WinLabel" type="Label" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+text = "You win! "
+label_settings = SubResource("LabelSettings_onhsd")
+horizontal_alignment = 1
 
-[node name="Collectible3" parent="." instance=ExtResource("5_0vthb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
-
-[node name="Collectible4" parent="." instance=ExtResource("5_0vthb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 5)
-
-[node name="Collectible5" parent="." instance=ExtResource("5_0vthb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 8)
-
-[connection signal="collected" from="Collectible" to="." method="_on_collectible_collected"]
-[connection signal="collected" from="Collectible2" to="." method="_on_collectible_collected"]
-[connection signal="collected" from="Collectible3" to="." method="_on_collectible_collected"]
-[connection signal="collected" from="Collectible4" to="." method="_on_collectible_collected"]
-[connection signal="collected" from="Collectible5" to="." method="_on_collectible_collected"]
+[editable path="Player"]
