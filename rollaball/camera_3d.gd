@@ -1,7 +1,6 @@
 # camera_follow.gd
 extends Camera3D
 
-# Une référence au noeud du joueur. @export permet de le glisser-déposer depuis l'éditeur.
 @export var target: Node3D
 
 # La distance entre la caméra et le joueur.

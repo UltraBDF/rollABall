@@ -59,11 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 8)
 
 [connection signal="collected" from="Collectible" to="." method="_on_collectible_collected"]
-[connection signal="collected" from="Collectible2" to="." method="_on_collectible_2_collected"]
 [connection signal="collected" from="Collectible2" to="." method="_on_collectible_collected"]
 [connection signal="collected" from="Collectible3" to="." method="_on_collectible_collected"]
-[connection signal="collected" from="Collectible3" to="." method="_on_collectible_3_collected"]
 [connection signal="collected" from="Collectible4" to="." method="_on_collectible_collected"]
-[connection signal="collected" from="Collectible4" to="." method="_on_collectible_4_collected"]
-[connection signal="collected" from="Collectible5" to="." method="_on_collectible_5_collected"]
 [connection signal="collected" from="Collectible5" to="." method="_on_collectible_collected"]
