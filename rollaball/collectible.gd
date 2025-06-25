@@ -9,7 +9,6 @@ signal collected
 func _process(delta):
 	rotate_y(rotation_speed * delta)
 
-
 # C'est la fonction qui est appelée AUTOMATIQUEMENT par Godot
 # quand un corps physique (comme notre joueur) entre dans l'Area3D.
 func _on_body_entered(body):

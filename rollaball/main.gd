@@ -15,15 +15,12 @@ var collectible_nodes = []
 @export var number_of_collectibles = 10
 @export var min_spawn_distance = 1.5 
 
-# On n'a plus besoin de la liste collectible_nodes ici.
-# var collectible_nodes = []
 func _ready():
 	generate_layout()
 	
 	# On s'assure que le score est bien affiché à "Score: 0" au début.
 	update_score_display()
 	
-
 func _on_collectible_collected():
 	score += 1 # On augmente le score de 1.
 	update_score_display() # On appelle notre autre fonction pour rafraîchir le texte.
