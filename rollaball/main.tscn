@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://b17p4p16711ud"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_1ts8y"]
+[ext_resource type="PackedScene" uid="uid://b5f8pj46cngmu" path="res://ground.tscn" id="1_sjufk"]
+[ext_resource type="PackedScene" uid="uid://4h0jnmthkdrt" path="res://player.tscn" id="2_jkxh6"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="3_wyxj2"]
+[ext_resource type="PackedScene" uid="uid://c3mwtnp7xalwd" path="res://collectible.tscn" id="5_0vthb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vqvet"]
+
+[sub_resource type="Sky" id="Sky_k1pfw"]
+sky_material = SubResource("ProceduralSkyMaterial_vqvet")
+
+[sub_resource type="Environment" id="Environment_3l8pq"]
+background_mode = 2
+sky = SubResource("Sky_k1pfw")
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("score_label")]
+script = ExtResource("1_1ts8y")
+score_label = NodePath("CanvasLayer/Label")
+
+[node name="Ground" parent="." instance=ExtResource("1_sjufk")]
+
+[node name="Player" parent="." instance=ExtResource("2_jkxh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 10, 14)
+script = ExtResource("3_wyxj2")
+target = NodePath("../Player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3l8pq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: 0"
+
+[node name="Collectible" parent="." instance=ExtResource("5_0vthb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+
+[node name="Collectible2" parent="." instance=ExtResource("5_0vthb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 5)
+
+[node name="Collectible3" parent="." instance=ExtResource("5_0vthb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+
+[node name="Collectible4" parent="." instance=ExtResource("5_0vthb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 5)
+
+[node name="Collectible5" parent="." instance=ExtResource("5_0vthb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 8)
+
+[connection signal="collected" from="Collectible" to="." method="_on_collectible_collected"]
+[connection signal="collected" from="Collectible2" to="." method="_on_collectible_2_collected"]
+[connection signal="collected" from="Collectible2" to="." method="_on_collectible_collected"]
+[connection signal="collected" from="Collectible3" to="." method="_on_collectible_collected"]
+[connection signal="collected" from="Collectible3" to="." method="_on_collectible_3_collected"]
+[connection signal="collected" from="Collectible4" to="." method="_on_collectible_collected"]
+[connection signal="collected" from="Collectible4" to="." method="_on_collectible_4_collected"]
+[connection signal="collected" from="Collectible5" to="." method="_on_collectible_5_collected"]
+[connection signal="collected" from="Collectible5" to="." method="_on_collectible_collected"]
