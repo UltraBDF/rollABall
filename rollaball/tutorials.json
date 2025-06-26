@@ -1,0 +1,38 @@
+{
+  "tutorials": [
+    {
+      "title": "Apprendre les bases",
+      "steps": [
+        {
+          "title": "Étape 1 : Déplacement",
+          "description": "Ajoutez un script pour faire déplacer le personnage.",
+          "demo_scene": "res://Tutorials/Basic/Step1/Demo.tscn",
+          "solution_script": "res://Tutorials/Basic/Step1/solution.gd"
+        },
+        {
+          "title": "Étape 2 : Saut",
+          "description": "Ajoutez un saut au personnage.",
+          "demo_scene": "res://Tutorials/Basic/Step2/Demo.tscn",
+          "solution_script": "res://Tutorials/Basic/Step2/solution.gd"
+        }
+      ]
+    },
+    {
+      "title": "Tuto2",
+      "steps": [
+        {
+          "title": "Étape 1 : Ton daron",
+          "description": "...",
+          "demo_scene": "res://Tutorials/Tuto2/Step1/Demo.tscn",
+          "solution_script": "res://Tutorials/Basic/Step1/solution.gd"
+        },
+        {
+          "title": "Étape 2 : Ta daronne",
+          "description": "...",
+          "demo_scene": "res://Tutorials/Tuto2/Step2/Demo.tscn",
+          "solution_script": "res://Tutorials/Tuto2/Step2/solution.gd"
+        }
+      ]
+    }
+  ]
+}

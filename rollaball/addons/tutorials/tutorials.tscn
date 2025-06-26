@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3 uid="uid://vwb3mfeo63c7"]
+
+[ext_resource type="Script" path="res://addons/tutorials/tutorials_view.gd" id="1_ejuh5"]
+
+[node name="TutorialsView" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ejuh5")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="LeftPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/LeftPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/LeftPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TutorialList" type="VBoxContainer" parent="HSplitContainer/LeftPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RightPanel" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/RightPanel"]
+layout_mode = 2
+
+[node name="TutorialTitle" type="Label" parent="HSplitContainer/RightPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StepSelector" type="OptionButton" parent="HSplitContainer/RightPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ShowDescriptionButton" type="Button" parent="HSplitContainer/RightPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Description"
+
+[node name="ShowDemoButton" type="Button" parent="HSplitContainer/RightPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Demo"
+
+[node name="ShowSolutionButton" type="Button" parent="HSplitContainer/RightPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Solution"
+
+[node name="ContentContainer" type="VBoxContainer" parent="HSplitContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/RightPanel/VBoxContainer/ContentContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StepDescription" type="RichTextLabel" parent="HSplitContainer/RightPanel/VBoxContainer/ContentContainer/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Texte d'exemple"
+
+[node name="CodeEditorContainer" type="ScrollContainer" parent="HSplitContainer/RightPanel/VBoxContainer/ContentContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SolutionCode" type="CodeEdit" parent="HSplitContainer/RightPanel/VBoxContainer/ContentContainer/CodeEditorContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "ergdfgsfdgsdfgsdfgsdfg"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HSplitContainer/RightPanel/VBoxContainer/ContentContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HSplitContainer/RightPanel/VBoxContainer/ContentContainer/SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 0
