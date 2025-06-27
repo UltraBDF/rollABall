@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccwqp4dytd0fx"]
+
+[ext_resource type="PackedScene" uid="uid://b5f8pj46cngmu" path="res://ground.tscn" id="4_yhmg0"]
+[ext_resource type="PackedScene" uid="uid://4h0jnmthkdrt" path="res://player.tscn" id="5_mci8b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vqvet"]
+
+[sub_resource type="Sky" id="Sky_k1pfw"]
+sky_material = SubResource("ProceduralSkyMaterial_vqvet")
+
+[sub_resource type="Environment" id="Environment_3l8pq"]
+background_mode = 2
+sky = SubResource("Sky_k1pfw")
+
+[node name="Main" type="Node3D"]
+
+[node name="Ground" parent="." instance=ExtResource("4_yhmg0")]
+
+[node name="Player" parent="." instance=ExtResource("5_mci8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3l8pq")
+
+[editable path="Ground"]
+[editable path="Player"]

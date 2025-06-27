@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://btnx1riopynae"]
+
+[ext_resource type="PackedScene" uid="uid://b5f8pj46cngmu" path="res://ground.tscn" id="4_yhmg0"]
+[ext_resource type="PackedScene" uid="uid://4h0jnmthkdrt" path="res://player.tscn" id="5_mci8b"]
+[ext_resource type="Script" path="res://camera_follow.gd" id="6_enxtx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vqvet"]
+
+[sub_resource type="Sky" id="Sky_k1pfw"]
+sky_material = SubResource("ProceduralSkyMaterial_vqvet")
+
+[sub_resource type="Environment" id="Environment_3l8pq"]
+background_mode = 2
+sky = SubResource("Sky_k1pfw")
+
+[node name="Main" type="Node3D"]
+
+[node name="Ground" parent="." instance=ExtResource("4_yhmg0")]
+
+[node name="Player" parent="." instance=ExtResource("5_mci8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 12)
+script = ExtResource("6_enxtx")
+target = NodePath("../Player/CharacterBody3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3l8pq")
+
+[editable path="Player"]

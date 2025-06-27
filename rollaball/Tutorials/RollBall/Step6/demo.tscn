@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://cp8vk3pr66abm"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_m65d5"]
+[ext_resource type="PackedScene" uid="uid://by17at5wpwapa" path="res://Tutorials/RollBall/Step5/obstacle_demo.tscn" id="2_2v124"]
+[ext_resource type="PackedScene" uid="uid://cerhj2a67p4er" path="res://Tutorials/RollBall/Step5/collectible_demo.tscn" id="3_vda43"]
+[ext_resource type="PackedScene" uid="uid://b5f8pj46cngmu" path="res://ground.tscn" id="4_wea6r"]
+[ext_resource type="PackedScene" uid="uid://4h0jnmthkdrt" path="res://player.tscn" id="5_a0ok6"]
+[ext_resource type="Script" path="res://camera_follow.gd" id="6_27nc5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vqvet"]
+
+[sub_resource type="Sky" id="Sky_k1pfw"]
+sky_material = SubResource("ProceduralSkyMaterial_vqvet")
+
+[sub_resource type="Environment" id="Environment_3l8pq"]
+background_mode = 2
+sky = SubResource("Sky_k1pfw")
+
+[sub_resource type="LabelSettings" id="LabelSettings_onhsd"]
+font_size = 24
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("score_label", "win_screen_container")]
+script = ExtResource("1_m65d5")
+score_label = NodePath("CanvasLayer/ScoreLabel")
+win_screen_container = NodePath("CanvasLayer/CenterContainer")
+obstacle_scene = ExtResource("2_2v124")
+collectible_scene = ExtResource("3_vda43")
+
+[node name="Ground" parent="." instance=ExtResource("4_wea6r")]
+
+[node name="Player" parent="." instance=ExtResource("5_a0ok6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 12)
+script = ExtResource("6_27nc5")
+target = NodePath("../Player/CharacterBody3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3l8pq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: 0"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinLabel" type="Label" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+text = "You win! "
+label_settings = SubResource("LabelSettings_onhsd")
+horizontal_alignment = 1
+
+[editable path="Player"]
