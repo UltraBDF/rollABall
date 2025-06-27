@@ -45,5 +45,45 @@
 		}
 	  ]
 	},
-  ]
+	  {
+		"title": "State Machine",
+		"steps": [
+		  {
+			"step_number": 1,
+			"title": "Step 1: Création du Monde",
+			"description": "Créer une scène 2D. Ajouter un Sol et deux Murs (StaticBody2D) avec leurs formes de collision. Créer un Ennemi (CharacterBody2D) avec son visuel et sa collision, puis le placer correctement entre les deux murs sans chevauchement.",
+			"demo_scene": "res://Tutorials/AI_FSM/Step1/demo.tscn",
+			"solution_script": "res://Tutorials/AI_FSM/Step1/solution.gd"
+		  },
+		  {
+			"step_number": 2,
+			"title": "Step 2: La Machine à États (FSM)",
+			"description": "Créer un script 'state_machine.gd' avec la classe de base 'State' et le mot-clé 'class_name'. Dans le script 'ennemi.gd', préparer la variable 'current_state' pour accueillir le futur comportement de l'ennemi.",
+			"demo_scene": "res://Tutorials/AI_FSM/Step2/demo.tscn",
+			"solution_script": "res://Tutorials/AI_FSM/Step2/solution.gd"
+		  },
+		  {
+			"step_number": 3,
+			"title": "Step 3: L'État de Patrouille",
+			"description": "Ajouter la classe interne 'PatrolState' au script de l'ennemi. Implémenter la logique de déplacement horizontal qui s'inverse en touchant un mur via is_on_wall(). Initialiser cet état au démarrage.",
+			"demo_scene": "res://Tutorials/AI_FSM/Step3/demo.tscn",
+			"solution_script": "res://Tutorials/AI_FSM/Step3/solution.gd"
+		  },
+		  {
+			"step_number": 4,
+			"title": "Step 4: Détection et Couches Physiques",
+			"description": "Ajouter un Joueur (CharacterBody2D). Ajouter une Area2D à l'Ennemi. Connecter les signaux 'body_entered' et 'body_exited'.",
+			"demo_scene": "res://Tutorials/AI_FSM/Step4/demo.tscn",
+			"solution_script": "res://Tutorials/AI_FSM/Step4/solution.gd"
+		  },
+		  {
+			"step_number": 5,
+			"title": "Step 5: L'État de Poursuite",
+			"description": "Ajouter la classe interne 'ChaseState'. Mettre à jour les signaux de détection pour changer l'état de l'ennemi entre 'PatrolState' et 'ChaseState', lui permettant de poursuivre le joueur horizontalement quand il est détecté.",
+			"demo_scene": "res://Tutorials/AI_FSM/Step5/demo.tscn",
+			"solution_script": "res://Tutorials/AI_FSM/Step5/solution.gd"
+		  }
+		]
+	  }
+	]
 }
