@@ -2,7 +2,7 @@
   "tutorials": [
 	{
 	  "title": "RollBall",
-	   "steps": [
+	  "steps": [
 		{
 		  "step_number": 0,
 		  "title": "Step 1: Project & Main Scene Setup",
@@ -45,44 +45,45 @@
 		}
 	  ]
 	},
-	  {
-		"title": "State Machine",
-		"steps": [
-		  {
-			"step_number": 1,
-			"title": "Step 1: World Creation",
-			"description": "Create a 2D scene. Add a Floor and two Walls (StaticBody2D) with their collision shapes. Create an Enemy (CharacterBody2D) with its visuals and collision, then place it correctly between the two walls without overlapping.",
-			"demo_scene": "res://Tutorials/AI_FSM/Step1/demo.tscn",
-			"solution_script": "res://Tutorials/AI_FSM/Step1/solution.gd"
-		  },
-		  {
-			"step_number": 2,
-			"title": "Step 2: The Finite State Machine (FSM)",
-			"description": "Create a 'state_machine.gd' script with the base 'State' class and the 'class_name' keyword. In the 'enemy.gd' script, prepare the 'current_state' variable to hold the enemy's future behavior.",
-			"demo_scene": "res://Tutorials/AI_FSM/Step2/demo.tscn",
-			"solution_script": "res://Tutorials/AI_FSM/Step2/solution.gd"
-		  },
-		  {
-			"step_number": 3,
-			"title": "Step 3: The Patrol State",
-			"description": "Add the inner class 'PatrolState' to the enemy's script. Implement the horizontal movement logic that reverses upon hitting a wall using is_on_wall(). Initialize this state on startup.",
-			"demo_scene": "res://Tutorials/AI_FSM/Step3/demo.tscn",
-			"solution_script": "res://Tutorials/AI_FSM/Step3/solution.gd"
-		  },
-		  {
-			"step_number": 4,
-			"title": "Step 4: Detection & Physics Layers",
-			"description": "Add a Player (CharacterBody2D). Add an Area2D to the Enemy. Connect the 'body_entered' and 'body_exited' signals.",
-			"demo_scene": "res://Tutorials/AI_FSM/Step4/demo.tscn",
-			"solution_script": "res://Tutorials/AI_FSM/Step4/solution.gd"
-		  },
-		  {
-			"step_number": 5,
-			"title": "Step 5: The Chase State",
-			"description": "Add the inner class 'ChaseState'. Update the detection signals to change the enemy's state between 'PatrolState' and 'ChaseState', allowing it to chase the player horizontally when detected.",
-			"demo_scene": "res://Tutorials/AI_FSM/Step5/demo.tscn",
-			"solution_script": "res://Tutorials/AI_FSM/Step5/solution.gd"
-		  }
-		]
+	{
+	  "title": "State Machine",
+	  "steps": [
+		{
+		  "step_number": 1,
+		  "title": "Step 1: World Creation",
+		  "description": "Create a 2D scene. Add a Floor and two Walls (StaticBody2D) with their collision shapes. Create an Enemy (CharacterBody2D) with its visuals and collision, then place it correctly between the two walls without overlapping.",
+		  "demo_scene": "res://Tutorials/AI_FSM/Step1/demo.tscn",
+		  "solution_script": "res://Tutorials/AI_FSM/Step1/solution.gd"
+		},
+		{
+		  "step_number": 2,
+		  "title": "Step 2: The Finite State Machine (FSM)",
+		  "description": "Create a 'state_machine.gd' script with the base 'State' class and the 'class_name' keyword. In the 'enemy.gd' script, prepare the 'current_state' variable to hold the enemy's future behavior.",
+		  "demo_scene": "res://Tutorials/AI_FSM/Step2/demo.tscn",
+		  "solution_script": "res://Tutorials/AI_FSM/Step2/solution.gd"
+		},
+		{
+		  "step_number": 3,
+		  "title": "Step 3: The Patrol State",
+		  "description": "Add the inner class 'PatrolState' to the enemy's script. Implement the horizontal movement logic that reverses upon hitting a wall using is_on_wall(). Initialize this state on startup.",
+		  "demo_scene": "res://Tutorials/AI_FSM/Step3/demo.tscn",
+		  "solution_script": "res://Tutorials/AI_FSM/Step3/solution.gd"
+		},
+		{
+		  "step_number": 4,
+		  "title": "Step 4: Detection & Physics Layers",
+		  "description": "Add a Player (CharacterBody2D). Add an Area2D to the Enemy. Connect the 'body_entered' and 'body_exited' signals.",
+		  "demo_scene": "res://Tutorials/AI_FSM/Step4/demo.tscn",
+		  "solution_script": "res://Tutorials/AI_FSM/Step4/solution.gd"
+		},
+		{
+		  "step_number": 5,
+		  "title": "Step 5: The Chase State",
+		  "description": "Add the inner class 'ChaseState'. Update the detection signals to change the enemy's state between 'PatrolState' and 'ChaseState', allowing it to chase the player horizontally when detected.",
+		  "demo_scene": "res://Tutorials/AI_FSM/Step5/demo.tscn",
+		  "solution_script": "res://Tutorials/AI_FSM/Step5/solution.gd"
+		}
+	  ]
 	}
+  ]
 }
