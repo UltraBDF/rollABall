@@ -103,6 +103,14 @@ func _on_tutorial_selected(index: int):
 		step_selector.select(0)
 		_on_step_selected(0)
 
+func _has_camera3d(node: Node) -> bool:
+	for child in node.get_children():
+		if child is Camera3D:
+			return true
+		if _has_camera3d(child):
+			return true
+	return false
+
 # Appelé lorsqu'une étape est choisie dans l'OptionButton
 func _on_step_selected(index: int):
 	if current_tutorial_index == -1:
@@ -133,17 +141,24 @@ func _on_step_selected(index: int):
 	if demo_path != "" and ResourceLoader.exists(demo_path):
 		var demo_scene = load(demo_path)
 		var demo_instance = demo_scene.instantiate()
-		
-		# Créer un viewport et ajouter l'instance de démo
+
+		var is_3d := demo_instance is Node3D or _has_camera3d(demo_instance)
+
+		# Créer un viewport et le configurer selon la nature de la scène
 		var viewport = SubViewport.new()
 		viewport.size = sub_viewport_container.size
-		viewport.add_child(demo_instance)
+		viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+		viewport.transparent_bg = true
 		sub_viewport_container.add_child(viewport)
-		
-		# Ajouter caméra si 3D (facultatif)
-		if demo_instance.is_in_group("3D_demo"):
-			var camera = Camera3D.new()
+
+		# Ajouter la scène dans le viewport
+		viewport.add_child(demo_instance)
+
+		# Si c'est une scène 3D, ajouter une caméra automatiquement si aucune n’est trouvée
+		if is_3d and not _has_camera3d(demo_instance):
+			var camera := Camera3D.new()
 			camera.position = Vector3(0, 5, 10)
+			viewport.add_child(camera)
 			camera.look_at(Vector3.ZERO)
 			viewport.add_child(camera)
 

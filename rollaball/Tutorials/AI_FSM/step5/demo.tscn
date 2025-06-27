@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://1ia6663qi8r1"]
 
-[ext_resource type="Script" uid="uid://c6cxagum1qsya" path="res://Tutorials/AI_FSM/step5/solution.gd" id="1_xbu2n"]
+[ext_resource type="Script" path="res://Tutorials/AI_FSM/step5/solution.gd" id="1_xbu2n"]
 [ext_resource type="Texture2D" uid="uid://cn705ejycw0hd" path="res://monstre.png" id="2_82mnm"]
 [ext_resource type="Texture2D" uid="uid://ldev8bq635xs" path="res://hero.png" id="3_2d42d"]
 
