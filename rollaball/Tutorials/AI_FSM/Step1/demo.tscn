@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv85nkiltnadg"]
+
+[ext_resource type="Script" uid="uid://c8c5gikw3yexc" path="res://Tutorials/AI_FSM/Step1/solution.gd" id="1_jtjlc"]
+[ext_resource type="Texture2D" uid="uid://cn705ejycw0hd" path="res://monstre.png" id="2_b5607"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjbnm"]
+size = Vector2(1150, 644)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3lct"]
+radius = 163.0
+height = 342.0
+
+[node name="MondeTutoriel" type="Node2D"]
+
+[node name="Plateformes" type="Node2D" parent="."]
+
+[node name="Sol" type="StaticBody2D" parent="Plateformes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plateformes/Sol"]
+position = Vector2(575, 322)
+shape = SubResource("RectangleShape2D_xjbnm")
+
+[node name="ColorRect" type="ColorRect" parent="Plateformes/Sol"]
+offset_right = 1150.0
+offset_bottom = 644.0
+color = Color(0.964774, 0.922542, 0.986721, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Ennemi" type="CharacterBody2D" parent="."]
+script = ExtResource("1_jtjlc")
+
+[node name="Sprite" type="Sprite2D" parent="Ennemi"]
+position = Vector2(934, 509)
+scale = Vector2(0.519593, 0.513703)
+texture = ExtResource("2_b5607")
+
+[node name="Collision" type="CollisionShape2D" parent="Ennemi"]
+position = Vector2(933, 499)
+shape = SubResource("CapsuleShape2D_q3lct")
